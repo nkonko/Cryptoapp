@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoApp", "CryptoApp\CryptoApp.csproj", "{50C9FE95-B381-45C3-8A74-8A88BB57F80B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain Model", "Domain\Domain Model.csproj", "{7D4743E9-EE32-4201-A6A3-C9D62DFCA28B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{D1D1FFD9-7FAF-4917-AD7C-9BD69069EC55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{7D4743E9-EE32-4201-A6A3-C9D62DFCA28B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{0BE1F281-B46D-4D4C-932D-009411630F5D}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{7D4743E9-EE32-4201-A6A3-C9D62DFCA28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4743E9-EE32-4201-A6A3-C9D62DFCA28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4743E9-EE32-4201-A6A3-C9D62DFCA28B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1D1FFD9-7FAF-4917-AD7C-9BD69069EC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1D1FFD9-7FAF-4917-AD7C-9BD69069EC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1D1FFD9-7FAF-4917-AD7C-9BD69069EC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1D1FFD9-7FAF-4917-AD7C-9BD69069EC55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0BE1F281-B46D-4D4C-932D-009411630F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0BE1F281-B46D-4D4C-932D-009411630F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BE1F281-B46D-4D4C-932D-009411630F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
