@@ -1,5 +1,6 @@
 ﻿namespace Domain
 {
+    using System.Collections.Generic;
     using System.Text;
     public class BankAccount : IAccount
     {
@@ -13,7 +14,7 @@
 
         public Client Client { get; set; }
 
-        //public Transaction Transaction { get; set; }
+        public List<Transaction> Transaction { get; set; }
 
         public void Deposit()
         {

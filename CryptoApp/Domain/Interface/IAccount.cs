@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System.Collections.Generic;
+
+namespace Domain
 {
     public interface IAccount
     {
@@ -6,7 +8,7 @@
 
         Client Client { get; set; }
 
-        Transaction Transaction { get; set; }
+        List<Transaction> Transaction { get; set; }
 
         void Deposit();
 

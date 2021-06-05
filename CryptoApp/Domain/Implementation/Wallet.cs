@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain_Model.Implementation
+﻿namespace Domain_Model.Implementation
 {
+    using System;
+
     public class Wallet
     {
+        public Guid UUID { get; set; }
+
+        public decimal Balance { get; set; }
+
 
     }
 }

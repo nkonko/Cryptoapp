@@ -1,16 +1,17 @@
 ﻿namespace Domain
 {
     using System;
+    using System.Collections.Generic;
 
     public class CryptoAccount : IAccount
     {
-        public string UUID { get; set; }
+        public Guid UUID { get; set; }
 
         public decimal Balance { get; set; }
 
         public Client Client { get; set; }
 
-        public Transaction Transaction { get; set; }
+        public List<Transaction> Transaction { get; set; }
 
         public void Deposit()
         {
