@@ -40,9 +40,9 @@ namespace CryptoApp
                 });
             });
 
-            services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("criptoapp"));
+            services.AddDbContext<TransactionContext>(opt => opt.UseInMemoryDatabase("criptoapp"));
             services.AddTransient(typeof(IRepository<Transaction>), typeof(Repository<Transaction>));
-            services.AddScoped<DbContext, ApiContext>();
+            services.AddScoped<DbContext, TransactionContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
