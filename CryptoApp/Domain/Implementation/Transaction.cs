@@ -11,9 +11,11 @@
 
         public DateTime Date { get; set; }
 
-        public decimal Amount { get; set; }
+        public decimal AmountToSend { get; set; }
 
-        public Currency CurrencyFrom { get; set; }
+        public decimal AmountToRetrive { get; set; }
+
+        public Enum.Type CurrencyType { get; set; }
 
         public Currency CurrencyTo { get; set; }
 

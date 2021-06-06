@@ -13,6 +13,8 @@
 
         public List<Transaction> Transaction { get; set; }
 
+        public Enum.Type Type { get; set; }
+
         public void Deposit()
         {
             throw new NotImplementedException();

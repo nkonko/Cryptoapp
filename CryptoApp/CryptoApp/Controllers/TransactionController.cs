@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Data;
+﻿using System.Collections.Generic;
 using Data.Repository;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace CryptoApp.Controllers
 {
@@ -13,27 +9,30 @@ namespace CryptoApp.Controllers
     [Route("[controller]")]
     public class TransactionController : ControllerBase
     {
-        private readonly ILogger<TransactionController> _logger;
-
         private readonly IRepository<Transaction> repository;
 
-        public TransactionController(ILogger<TransactionController> logger, IRepository<Transaction> repository)
+        public TransactionController(IRepository<Transaction> repository)
         {
-            _logger = logger;
             this.repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Transaction> Get()
+        [Route("transactions")]
+        [Produces(typeof(IEnumerable<Transaction>))]
+        public IActionResult GetTransactions()
         {
-            return repository.List();
+            var transactions = repository.List();
+
+            return Ok(transactions);
         }
 
         [HttpPost]
-        
-        public void Post(Transaction transaction)
+        [Produces(typeof(Transaction))]
+        public IActionResult Post(Transaction transaction)
         {
             repository.Save(transaction);
+
+            return Ok();
         }
     }
 }

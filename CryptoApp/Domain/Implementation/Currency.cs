@@ -1,6 +1,7 @@
 ﻿namespace Domain_Model.Implementation
 {
     using System.ComponentModel.DataAnnotations;
+    using Domain.Enum;
 
     public class Currency
     {
@@ -10,12 +11,5 @@
         public decimal Price { get; set; }
 
         public Type Type { get; set; }
-    }
-
-    public enum Type
-    {
-        BTC,
-        USD,
-        ARS
     }
 }
