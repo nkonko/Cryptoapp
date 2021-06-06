@@ -10,16 +10,16 @@
             <a class="nav-link" routerLink="home">Home</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async)">
-            <a class="nav-link" routerLink="private">Ingresar</a>
+            <a class="nav-link" routerLink="deposit">Depositar</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async)">
-            <a class="nav-link" routerLink="private">Comprar</a>
+            <a class="nav-link" routerLink="purchase">Comprar</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async)">
-            <a class="nav-link" routerLink="private">Vender</a>
+            <a class="nav-link" routerLink="sale">Vender</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async)">
-            <a class="nav-link" routerLink="private">Retirar</a>
+            <a class="nav-link" routerLink="withdraw">Retirar</a>
           </li>
         </ul>
       </div>

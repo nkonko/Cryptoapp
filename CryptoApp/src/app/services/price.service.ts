@@ -6,7 +6,7 @@ import { currency } from '../model/currency.model';
   providedIn: 'root'
 })
 export class PriceService {
-  private url = 'https://api-dolar-argentina.herokuapp.com/api/dolarblue';
+  private url = 'https://localhost:5000/api/GetUSDPrice';
 
   constructor(private http: HttpClient) { 
   }

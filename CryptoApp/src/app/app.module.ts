@@ -4,26 +4,32 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { PrivateComponent } from './private/private.component';
 import { PriceComponent } from './price/price.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { PurchaseComponent } from './purchase/purchase.component';
+import { SaleComponent } from './sale/sale.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PrivateComponent,
     PriceComponent,
-    DepositComponent
+    DepositComponent,
+    WithdrawComponent,
+    PurchaseComponent,
+    SaleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-7ti683ug.us.auth0.com',
