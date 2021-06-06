@@ -11,11 +11,11 @@
 
         public Client Client { get; set; }
 
-        public List<Transaction> Transaction { get; set; }
+        public List<Transaction> Transactions { get; set; }
 
         public Enum.Type Type { get; set; }
 
-        public void Deposit()
+        public void Deposit(decimal amount)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,4 @@
-﻿namespace Domain_Model.Implementation
+namespace Domain_Model.Implementation
 {
     using System.ComponentModel.DataAnnotations;
     using Domain.Enum;
@@ -8,7 +8,9 @@
         [Key]
         public int Id { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal PurchasePrice { get; set; }
+
+        public decimal SalePrice { get; set; }
 
         public Type Type { get; set; }
     }

@@ -1,0 +1,5 @@
+<app-navbar></app-navbar>
+<app-price *ngIf="(auth.isAuthenticated$ | async)"></app-price>
+<div class="container mt-5">
+    <router-outlet></router-outlet>
+</div>
