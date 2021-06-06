@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Data.Repository;
-using Domain;
-using Microsoft.AspNetCore.Mvc;
-
-namespace CryptoApp.Controllers
+﻿namespace CryptoApp.Controllers
 {
+    using System.Collections.Generic;
+    using Data.Repository;
+    using Domain;
+    using Microsoft.AspNetCore.Mvc;
+
     [ApiController]
     [Route("[controller]")]
     public class TransactionController : ControllerBase

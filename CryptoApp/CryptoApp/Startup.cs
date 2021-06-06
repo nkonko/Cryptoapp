@@ -40,9 +40,12 @@ namespace CryptoApp
                 });
             });
 
-            services.AddDbContext<TransactionContext>(opt => opt.UseInMemoryDatabase("criptoapp"));
+            services.AddDbContext<AppContext>(opt => opt.UseInMemoryDatabase("CriptoSap"));
+            services.AddScoped<DbContext, AppContext>();
             services.AddTransient(typeof(IRepository<Transaction>), typeof(Repository<Transaction>));
-            services.AddScoped<DbContext, TransactionContext>();
+            services.AddTransient(typeof(IRepository<BankAccount>), typeof(Repository<BankAccount>));
+            services.AddTransient(typeof(IRepository<CryptoAccount>), typeof(Repository<CryptoAccount>));
+            services.AddTransient(typeof(IRepository<Client>), typeof(Repository<Client>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

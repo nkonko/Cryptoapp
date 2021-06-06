@@ -8,9 +8,9 @@ namespace Domain
 
         Client Client { get; set; }
 
-        List<Transaction> Transaction { get; set; }
+        List<Transaction> Transactions { get; set; }
 
-        void Deposit();
+        void Deposit(decimal amount);
 
         void Transfer();
     }

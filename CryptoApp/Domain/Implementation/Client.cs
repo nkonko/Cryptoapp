@@ -9,6 +9,5 @@
         public List<IAccount> Account { get; set; }
 
         public string Name { get; set; }
-
     }
 }

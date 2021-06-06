@@ -1,7 +1,6 @@
 ﻿namespace Domain
 {
     using System.Collections.Generic;
-    using System.Text;
     using Domain.Enum;
 
     public class BankAccount : IAccount
@@ -16,20 +15,18 @@
 
         public Client Client { get; set; }
 
-        public List<Transaction> Transaction { get; set; }
+        public List<Transaction> Transactions { get; set; }
 
         public Type Type { get; set; }
 
-        public void Deposit()
+        public void Deposit(decimal amount)
         {
-            throw new System.NotImplementedException();
+            Balance += amount;
         }
 
         public void Transfer()
         {
             throw new System.NotImplementedException();
         }
-
-       
     }
 }
