@@ -1,7 +1,9 @@
 namespace Services.Interface
 {
+  using Domain;
+
   public interface IDepositService
   {
-    void DepositMoney(decimal amount);
+    void DepositMoney(BankAccount account, decimal amount);
   }
 }

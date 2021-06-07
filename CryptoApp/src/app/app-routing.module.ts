@@ -12,7 +12,7 @@ import { AccountComponent } from './account/account.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'deposit', component: DepositComponent, canActivate: [AuthGuard]},
+  {path: 'deposit/:id', component: DepositComponent, canActivate: [AuthGuard]},
   {path: 'account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard]},
   {path: 'sale', component: SaleComponent, canActivate: [AuthGuard]},

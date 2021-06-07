@@ -15,13 +15,18 @@ namespace Services.Implementation
       this.cryptoRepo = cryptoRepo;
     }
 
-    public void DepositMoney(decimal amount)
+    public void DepositMoney(BankAccount account, decimal amount)
     {
-      var account = new BankAccount();
-
       account.Balance += amount;
 
       bankRepo.Update(account);
+    }
+
+    public void DepositCrypto(CryptoAccount account, decimal amount)
+    {
+      account.Balance += amount;
+
+      cryptoRepo.Update(account);
     }
   }
 }

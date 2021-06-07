@@ -1,14 +1,18 @@
 namespace Domain
 {
-    using System.Collections.Generic;
+  using System.Collections.Generic;
+  using System.ComponentModel.DataAnnotations;
 
-    public class Client
-    {
-        public int NumClient { get; set; }
+  public class Client
+  {
+    [Key]
+    public int? NumClient { get; set; }
 
-        public List<IAccount> Account { get; set; }
+    public int Dni { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
+
+    public List<Transaction> Transactions { get; set; }
 
   }
 }

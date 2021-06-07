@@ -2,6 +2,10 @@ namespace Domain.Implementation
 {
   public class User
   {
-    public string UserName { get; set; }
+    public int dni { get; set; }
+
+    public string Name { get; set; }
+
+    public string Alias { get; set; }
   }
 }

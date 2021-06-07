@@ -1,28 +1,27 @@
-﻿namespace Domain
+namespace Domain
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.ComponentModel.DataAnnotations;
 
-    public class CryptoAccount : IAccount
+  public class CryptoAccount : IAccount
+  {
+    [Key]
+    public Guid UUID { get; set; }
+
+    public decimal Balance { get; set; }
+
+    public Client Client { get; set; }
+
+    public Enum.Type Type { get; set; }
+
+    public void Deposit(decimal amount)
     {
-        public Guid UUID { get; set; }
-
-        public decimal Balance { get; set; }
-
-        public Client Client { get; set; }
-
-        public List<Transaction> Transactions { get; set; }
-
-        public Enum.Type Type { get; set; }
-
-        public void Deposit(decimal amount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Transfer()
-        {
-            throw new NotImplementedException();
-        }
+      throw new NotImplementedException();
     }
+
+    public void Transfer()
+    {
+      throw new NotImplementedException();
+    }
+  }
 }

@@ -1,22 +1,21 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+const base_url = environment.base_url;
 
 @Injectable({
   providedIn: 'root'
 })
 export class DepositService {
   
-  private url = 'https://localhost:44361/Account/Deposit/1';
+  private api = 'Account/Deposit/';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   
   constructor(private http: HttpClient) { }
 
-  public depositMoney(amount:number){
-    this.http.put(this.url,amount,{ headers: this.headers}).subscribe(
-      () => {
-      },
-      err => { console.log(err); }
-    );
+  public depositMoney(id:string, amount:number){
+    return this.http.put(`${base_url}${this.api}/${id}`,amount,{ headers: this.headers});
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DepositService } from '../services/deposit.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AccountService } from '../services/account.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-deposit',
@@ -8,10 +10,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./deposit.component.css']
 })
 export class DepositComponent implements OnInit {
-
-  constructor(private deposit: DepositService) { }
+  public id: string;
+  
+  constructor(private route: ActivatedRoute, private deposit: DepositService, private account: AccountService) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
   }
 
   form = new FormGroup(
@@ -21,7 +25,13 @@ export class DepositComponent implements OnInit {
   )
 
   onSubmit() {
-   this.deposit.depositMoney(this.form.get('amount').value);
+   this.deposit.depositMoney(this.id, this.form.get('amount').value)
+   .subscribe(
+    res => {
+      console.log(res);
+    },
+    err => { console.log(err); 
+    });
   }
 
 }

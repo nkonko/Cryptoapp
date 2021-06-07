@@ -1,7 +1,5 @@
-export class bankAccount {
-    AccountNumb: number
-    Alias: string
-    Balance: number
-    Client: {}
-    Type: string
+export class account{
+    dni:number
+    name: string
+    alias: string
 }

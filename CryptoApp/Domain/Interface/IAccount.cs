@@ -1,17 +1,15 @@
-﻿using System.Collections.Generic;
-
 namespace Domain
 {
-    public interface IAccount
-    {
-        decimal Balance { get; set; }
+  public interface IAccount
+  {
+    decimal Balance { get; set; }
 
-        Client Client { get; set; }
+    Client Client { get; set; }
 
-        List<Transaction> Transactions { get; set; }
+    public Enum.Type Type { get; set; }
 
-        void Deposit(decimal amount);
+    void Deposit(decimal amount);
 
-        void Transfer();
-    }
+    void Transfer();
+  }
 }
