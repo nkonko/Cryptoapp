@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -14,6 +14,7 @@ import { DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { SaleComponent } from './sale/sale.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import { SaleComponent } from './sale/sale.component';
     DepositComponent,
     WithdrawComponent,
     PurchaseComponent,
-    SaleComponent
+    SaleComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-7ti683ug.us.auth0.com',

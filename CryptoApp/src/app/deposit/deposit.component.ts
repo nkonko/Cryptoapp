@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepositService } from '../services/deposit.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-deposit',
@@ -13,9 +14,15 @@ export class DepositComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public depositMoney(amount: number)
-  {
-    this.deposit.depositMoney(amount);
+  form = new FormGroup(
+    {
+      amount: new FormControl(0, Validators.required)
+    }
+  )
+
+  onSubmit() {
+   this.deposit.depositMoney(this.form.get('amount').value);
   }
 
 }
+  

@@ -1,0 +1,30 @@
+<form [formGroup]='form' 
+      (ngSubmit)="onSubmit()">
+        <input formControlName="amount">
+        <div class="form-group text-center mt-5">
+            <div class="col-xs-12">
+                <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Depositar</button>
+            </div>
+        </div>
+     </form>
+
+
+<div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label  class="col-form-label">Nombre</label>
+    </div>
+    <div class="col-auto">
+        <label class="col-form-label">Alias</label>
+      </div>
+    <div class="col-auto">
+      <input type="text" id="inputPassword6" class="form-control" >
+    </div>
+    <div class="col-auto">
+        <input type="text" id="inputPassword6" class="form-control" >
+      </div>
+    <div class="col-auto">
+      <span id="passwordHelpInline" class="form-text">
+        El campo no puede quedar vacio.
+      </span>
+    </div>
+  </div>

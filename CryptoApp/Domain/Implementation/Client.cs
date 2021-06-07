@@ -1,4 +1,4 @@
-﻿namespace Domain
+namespace Domain
 {
     using System.Collections.Generic;
 
@@ -9,5 +9,6 @@
         public List<IAccount> Account { get; set; }
 
         public string Name { get; set; }
-    }
+
+  }
 }

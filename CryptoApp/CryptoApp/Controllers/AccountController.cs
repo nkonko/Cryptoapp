@@ -1,27 +1,40 @@
-﻿namespace CryptoApp.Controllers
+namespace CryptoApp.Controllers
 {
-    using Data.Repository;
-    using Domain;
-    using Microsoft.AspNetCore.Mvc;
+  using Domain;
+  using Microsoft.AspNetCore.Mvc;
+  using Services.Interface;
 
-    [ApiController]
-    [Route("[controller]")]
-    public class AccountController : ControllerBase
+  [ApiController]
+  [Route("[controller]")]
+  public class AccountController : ControllerBase
+  {
+    private readonly IDepositService depositSvc;
+
+    private readonly IAccountService accountSvc;
+
+    public AccountController(IDepositService depositSvc, IAccountService accountSvc)
     {
-        private readonly IRepository<IAccount> repository;
-
-        public AccountController(IRepository<IAccount> repository)
-        {
-            this.repository = repository;
-        }
-
-        [HttpPost]
-        [Produces(typeof(IAccount))]
-        public IActionResult Post(IAccount account)
-        {
-            repository.Save(account);
-
-            return Ok();
-        }
+      this.depositSvc = depositSvc;
+      this.accountSvc = accountSvc;
     }
+
+    [HttpPost]
+    [Produces(typeof(IAccount))]
+    public IActionResult Post(BankAccount account)
+    {
+      accountSvc.CreateAccount(account);
+
+      return Ok();
+    }
+
+    [HttpPut]
+    [Route("Deposit/{id}")]
+
+    public IActionResult Deposit([FromBody]decimal amount)
+    {
+      depositSvc.DepositMoney(amount);
+
+      return Ok();
+    }
+  }
 }

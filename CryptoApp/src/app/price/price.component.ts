@@ -17,7 +17,7 @@ export class PriceComponent implements OnInit {
   constructor(private priceService: PriceService) { }
 
   ngOnInit(): void {
-    this.priceService.getMoneyPrice();
+    //this.priceService.getMoneyPrice();
   }
 
 

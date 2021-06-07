@@ -9,6 +9,14 @@
         <h5>CBU</h5>
         <p>XXXXXXXXXXXX-XXXXXXX</p>
     </div>
-    <input type="text">
-    <button (click)="depositMoney(1)">Ingresar</button>
+    <form [formGroup]='form' 
+          autocomplete="off"
+          (ngSubmit)="onSubmit()">
+        <input formControlName="amount">
+        <div class="form-group text-center mt-5">
+            <div class="col-xs-12">
+                <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Depositar</button>
+            </div>
+        </div>
+     </form>
 </div>
