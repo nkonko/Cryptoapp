@@ -1,6 +1,5 @@
 namespace CryptoApp.Controllers
 {
-  using System.Collections.Generic;
   using Domain;
   using Domain.Implementation;
   using Microsoft.AspNetCore.Mvc;
@@ -24,17 +23,17 @@ namespace CryptoApp.Controllers
     [Produces(typeof(IAccount))]
     public IActionResult Post(User account)
     {
-      accountSvc.CreateAccount(account);
+      var id = accountSvc.CreateAccount(account);
 
-      return Ok();
+      return Ok(id);
     }
 
     [HttpGet]
     [Route("get/{id}")]
     [Produces(typeof(BankAccount))]
-    public IActionResult GetArsAccount([FromRoute] int accountNumber)
+    public IActionResult GetArsAccount([FromRoute] int id)
     {
-      var account = accountSvc.GetArsAccount(accountNumber);
+      var account = accountSvc.GetArsAccount(id);
 
       return Ok(account);
     }
@@ -42,9 +41,9 @@ namespace CryptoApp.Controllers
     [HttpPut]
     [Route("Deposit/{id}")]
 
-    public IActionResult Deposit([FromRoute]int accNumber, [FromBody]decimal amount)
+    public IActionResult Deposit([FromRoute]int id, [FromBody]decimal amount)
     {
-      var account = accountSvc.GetArsAccount(accNumber);
+      var account = accountSvc.GetArsAccount(id);
 
       depositSvc.DepositMoney(account, amount);
 

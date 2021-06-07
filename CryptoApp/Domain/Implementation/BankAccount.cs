@@ -1,6 +1,5 @@
 namespace Domain
 {
-  using System.Collections.Generic;
   using System.ComponentModel.DataAnnotations;
   using Domain.Enum;
 
@@ -16,6 +15,8 @@ namespace Domain
     public decimal Balance { get; set; }
 
     public Client Client { get; set; }
+
+    public int NumClient { get; set; }
 
     public Type Type { get; set; }
 

@@ -8,7 +8,7 @@ namespace Domain
     [Key]
     public int? NumClient { get; set; }
 
-    public int Dni { get; set; }
+    public string Dni { get; set; }
 
     public string Name { get; set; }
 

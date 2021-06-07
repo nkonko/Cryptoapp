@@ -12,6 +12,8 @@ namespace Domain
 
     public Client Client { get; set; }
 
+    public int NumClient { get; set; }
+
     public Enum.Type Type { get; set; }
 
     public void Deposit(decimal amount)

@@ -10,7 +10,7 @@ const base_url = environment.base_url;
 })
 export class AccountService {
 
-  private api = 'Account/';
+  private api = 'Account';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   
   constructor(private http: HttpClient) { }

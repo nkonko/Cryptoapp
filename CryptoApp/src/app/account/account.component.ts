@@ -33,6 +33,8 @@ export class AccountComponent implements OnInit {
       return;
     }
 
+    console.log(this.form.value);
+
     this.accountService.createAccount(this.form.value)
     .subscribe(
       res => {

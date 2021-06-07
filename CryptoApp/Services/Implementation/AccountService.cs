@@ -22,14 +22,15 @@ namespace Services.Implementation
       this.cryptoRepo = cryptoRepo;
     }
 
-    public void CreateAccount(User userData)
+    public int CreateAccount(User userData)
     {
       try
       {
         var repoB = bankRepo.List().ToList();
         var repoC = cryptoRepo.List().ToList();
 
-        if (repoB.Any(acc => acc.Client.Dni != userData.dni) && repoC.Any(acc => acc.Client.Dni != userData.dni))
+        if (repoB.Count == 0 && repoC.Count == 0 ||
+            repoB.Any(acc => acc.Client.Dni != userData.dni) && repoC.Any(acc => acc.Client.Dni != userData.dni))
         {
           var client = new Client() { Dni = userData.dni, Name = userData.Name, Transactions = new List<Transaction>() };
 
@@ -40,10 +41,12 @@ namespace Services.Implementation
             Balance = 0,
             Client = client,
             Type = Domain.Enum.Type.BTC,
-            UUID = new System.Guid()
+            UUID = new Guid()
           };
 
           cryptoRepo.Save(cryptoAccount);
+
+          return client.NumClient.Value;
         }
         else
         {
@@ -54,40 +57,50 @@ namespace Services.Implementation
       catch (Exception ex)
       {
         //TODO: Add logger and send ex message
-        throw;
+        throw new Exception($"hubo un error: {ex}");
       }
     }
 
-    public IAccount GetArsAccount(long accountNumber)
+    public BankAccount GetArsAccount(int clientNumber)
     {
-      return bankRepo.Where(acc => acc.AccountNumb == accountNumber &&
+      return bankRepo.Where(acc => acc.NumClient == clientNumber &&
                             acc.Type == Domain.Enum.Type.ARS).FirstOrDefault();
     }
 
-    public IAccount GetUsdAccount(long accountNumber)
+    public BankAccount GetUsdAccount(int clientNumber)
     {
-      return bankRepo.Where(acc => acc.AccountNumb == accountNumber &&
+      return bankRepo.Where(acc => acc.NumClient == clientNumber &&
                             acc.Type == Domain.Enum.Type.USD).FirstOrDefault();
     }
 
-    public IAccount GetCryptoAccount(long accountNumber)
+    public CryptoAccount GetCryptoAccount(int clientNumber)
     {
-      return cryptoRepo.Where(acc => acc.Client.NumClient == accountNumber &&
+      return cryptoRepo.Where(acc => acc.NumClient == clientNumber &&
                               acc.Type == Domain.Enum.Type.BTC).FirstOrDefault();
     }
 
     private Client GenerateStandarAccount(Client client, string alias, List<BankAccount> repo)
     {
-      int? accNumber = GetAccountNumber(repo);
+      int? arsAccNumber;
+      int? usdAccNumber;
+
+      do
+      {
+        arsAccNumber = GetAccountNumber(repo);
+
+        usdAccNumber = GetAccountNumber(repo);
+      }
+      while (arsAccNumber == usdAccNumber);
 
       long? cbu = GetCbuNumber(repo);
 
-      client.NumClient = accNumber;
+      client.NumClient = arsAccNumber;
 
       var bankAccountArs = new BankAccount()
       {
         CBU = cbu,
-        AccountNumb = accNumber,
+        AccountNumb = arsAccNumber,
+        NumClient = arsAccNumber.Value,
         Alias = alias,
         Balance = 0,
         Client = client,
@@ -97,7 +110,8 @@ namespace Services.Implementation
       var bankAccountUsd = new BankAccount()
       {
         CBU = cbu,
-        AccountNumb = accNumber,
+        AccountNumb = usdAccNumber,
+        NumClient = arsAccNumber.Value,
         Alias = alias,
         Balance = 0,
         Client = client,
@@ -132,6 +146,6 @@ namespace Services.Implementation
       return accNumber;
     }
 
-    
+
   }
 }

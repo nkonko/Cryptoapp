@@ -5,12 +5,12 @@ namespace Services.Interface
 
   public interface IAccountService
   {
-    void CreateAccount(User userData);
+    int CreateAccount(User userData);
 
-    BankAccount GetArsAccount(int accountNumber);
+    BankAccount GetArsAccount(int clientNumber);
 
-    BankAccount GetUsdAccount(int accountNumber);
+    BankAccount GetUsdAccount(int clientNumber);
 
-    CryptoAccount GetCryptoAccount(int accountNumber);
+    CryptoAccount GetCryptoAccount(int clientNumber);
   }
 }
