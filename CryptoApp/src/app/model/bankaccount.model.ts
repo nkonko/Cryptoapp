@@ -1,5 +1,5 @@
 export class bankAccount {
-    AccountNumb: number
+    AccountNumb: string
     Alias: string
     Balance: number
     Client: {}

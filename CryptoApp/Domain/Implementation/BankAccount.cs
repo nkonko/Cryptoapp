@@ -20,14 +20,5 @@ namespace Domain
 
     public Type Type { get; set; }
 
-    public void Deposit(decimal amount)
-    {
-      Balance += amount;
-    }
-
-    public void Transfer()
-    {
-      throw new System.NotImplementedException();
-    }
   }
 }

@@ -15,6 +15,7 @@ import { WithdrawComponent } from './withdraw/withdraw.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { SaleComponent } from './sale/sale.component';
 import { AccountComponent } from './account/account.component';
+import { DollarComponent } from './dollar/dollar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AccountComponent } from './account/account.component';
     WithdrawComponent,
     PurchaseComponent,
     SaleComponent,
-    AccountComponent
+    AccountComponent,
+    DollarComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,8 @@ namespace CryptoApp.Controllers
     }
 
     [HttpPost]
-    [Produces(typeof(IAccount))]
+    [Route("ArsToUsd")]
+    [Produces(typeof(bool))]
     public IActionResult ExchangeArsToUsd(int id, string amount)
     {
       var amountd = decimal.Parse(amount);
@@ -27,7 +28,8 @@ namespace CryptoApp.Controllers
     }
 
     [HttpPost]
-    [Produces(typeof(IAccount))]
+    [Route("UsdToBtc")]
+    [Produces(typeof(bool))]
     public IActionResult ExchangeUsdToBtc(int id, string amount)
     {
       var amountd = decimal.Parse(amount);

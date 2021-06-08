@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DepositService } from '../services/deposit.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AccountService } from '../services/account.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-deposit',
@@ -11,8 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DepositComponent implements OnInit {
   public id: string;
-  
-  constructor(private route: ActivatedRoute, private deposit: DepositService, private account: AccountService) { }
+  public isDeposited: boolean;
+
+  constructor(private router: Router, private route: ActivatedRoute, private deposit: DepositService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -27,11 +27,16 @@ export class DepositComponent implements OnInit {
   onSubmit() {
    this.deposit.depositMoney(this.id, this.form.get('amount').value)
    .subscribe(
-    res => {
+    (res:boolean) => {
       console.log(res);
+      this.isDeposited = res;
     },
     err => { console.log(err); 
     });
+  }
+
+  public onButtonClick(accNumber:string){
+    this.router.navigate(["/purchase", accNumber])
   }
 
 }

@@ -1,15 +1,20 @@
 namespace Services.Implementation
 {
+  using Data.Repository;
+  using Domain;
   using Services.Interface;
 
   public class ExchangeService : IExchangeService
   {
     private readonly IAccountService accountSvc;
+    private readonly IRepository<BankAccount> repository;
+
     private readonly  int dolarPrice = 165;
     private readonly  int bitcoinPrice = 43000;
-    public ExchangeService(IAccountService accountSvc)
+    public ExchangeService(IAccountService accountSvc, IRepository<BankAccount> repository)
     {
       this.accountSvc = accountSvc;
+      this.repository = repository;
     }
 
     public bool ExchangeArsToUsd(int id, decimal amount)
@@ -19,6 +24,9 @@ namespace Services.Implementation
 
       accountArs.Balance -= amount;
       accountUsd.Balance = amount / dolarPrice;
+
+      repository.Update(accountArs);
+      repository.Update(accountUsd);
 
       return true;
     }

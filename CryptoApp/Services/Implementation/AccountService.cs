@@ -29,8 +29,7 @@ namespace Services.Implementation
         var repoB = bankRepo.List().ToList();
         var repoC = cryptoRepo.List().ToList();
 
-        if (repoB.Count == 0 && repoC.Count == 0 ||
-            repoB.Any(acc => acc.Client.Dni != userData.dni) && repoC.Any(acc => acc.Client.Dni != userData.dni))
+        if (repoB.Count == 0 && repoC.Count == 0)
         {
           var client = new Client() { Dni = userData.dni, Name = userData.Name, Transactions = new List<Transaction>() };
 
@@ -145,7 +144,5 @@ namespace Services.Implementation
       while (repo.Any(acc => acc.AccountNumb == accNumber));
       return accNumber;
     }
-
-
   }
 }

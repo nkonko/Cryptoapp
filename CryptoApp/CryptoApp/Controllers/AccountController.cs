@@ -10,17 +10,18 @@ namespace CryptoApp.Controllers
   public class AccountController : ControllerBase
   {
     private readonly IDepositService depositSvc;
-
     private readonly IAccountService accountSvc;
+    private readonly IWithdrawService withdrawService;
 
-    public AccountController(IDepositService depositSvc, IAccountService accountSvc)
+    public AccountController(IDepositService depositSvc, IAccountService accountSvc, IWithdrawService withdrawService)
     {
       this.depositSvc = depositSvc;
       this.accountSvc = accountSvc;
+      this.withdrawService = withdrawService;
     }
 
     [HttpPost]
-    [Produces(typeof(IAccount))]
+    [Produces(typeof(int))]
     public IActionResult Post(User account)
     {
       var id = accountSvc.CreateAccount(account);
@@ -40,12 +41,24 @@ namespace CryptoApp.Controllers
 
     [HttpPut]
     [Route("Deposit/{id}")]
-
-    public IActionResult Deposit([FromRoute]int id, [FromBody]decimal amount)
+    [Produces(typeof(bool))]
+    public IActionResult Deposit([FromRoute] int id, [FromBody] decimal amount)
     {
       var account = accountSvc.GetArsAccount(id);
 
-      depositSvc.DepositMoney(account, amount);
+     var result = depositSvc.DepositMoney(account, amount);
+
+      return Ok(result);
+    }
+
+    [HttpPut]
+    [Route("Extract/{id}")]
+    [Produces(typeof(void))]
+    public IActionResult Extract(int type, [FromRoute] int id, [FromBody] decimal amount)
+    {
+      var account = accountSvc.GetArsAccount(id);
+
+      withdrawService.ExtractMoney((Domain.Enum.Type)type, account, amount);
 
       return Ok();
     }

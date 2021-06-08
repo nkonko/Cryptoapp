@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -8,8 +9,9 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-
-  constructor(private accountService:AccountService) { }
+  
+  public id: number;
+  constructor(private accountService:AccountService, private router:Router) { }
 
   form = new FormGroup(
     {
@@ -33,17 +35,20 @@ export class AccountComponent implements OnInit {
       return;
     }
 
-    console.log(this.form.value);
-
     this.accountService.createAccount(this.form.value)
     .subscribe(
-      res => {
-        console.log(res);
+      (res: number) => {
+        this.id  = res;
+        
       },
       err => { console.log(err); 
       });
 
     this.form.reset();
+  }
+
+  public onButtonClick(accNumber:number){
+    this.router.navigate(["/deposit", accNumber])
   }
   
 }

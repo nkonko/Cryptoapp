@@ -58,6 +58,8 @@ namespace CryptoApp
       services.AddTransient<IDepositService, DepositService>();
       services.AddTransient<IAccountService, AccountService>();
       services.AddTransient<IExchangeService, ExchangeService>();
+      services.AddTransient<ITransferService, TransferService>();
+      services.AddTransient<IWithdrawService, WithdrawService>();
       services.AddTransient(typeof(IRepository<Transaction>), typeof(Repository<Transaction>));
       services.AddTransient(typeof(IRepository<BankAccount>), typeof(Repository<BankAccount>));
       services.AddTransient(typeof(IRepository<CryptoAccount>), typeof(Repository<CryptoAccount>));

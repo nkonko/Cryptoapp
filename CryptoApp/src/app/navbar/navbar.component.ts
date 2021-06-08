@@ -22,6 +22,6 @@ export class NavbarComponent implements OnInit {
   }
 
   public depositNav(accNumber:number){
-    this.router.navigate(["/deposit", 'usuario', accNumber])
+    this.router.navigate(["/deposit", accNumber])
   }
 }

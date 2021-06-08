@@ -19,4 +19,9 @@
             </div>
         </div>
      </form>
+     <div class="row" *ngIf="isDeposited">
+         <h3>Depositado!</h3>
+     </div>
+     <button (click)="onButtonClick(id)"
+             class="btn btn-primary float-end" > Comprar </button>
 </div>

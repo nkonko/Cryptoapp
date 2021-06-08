@@ -4,6 +4,6 @@ namespace Services.Interface
 
   public interface IDepositService
   {
-    void DepositMoney(BankAccount account, decimal amount);
+    bool DepositMoney(BankAccount account, decimal amount);
   }
 }

@@ -15,15 +15,5 @@ namespace Domain
     public int NumClient { get; set; }
 
     public Enum.Type Type { get; set; }
-
-    public void Deposit(decimal amount)
-    {
-      throw new NotImplementedException();
-    }
-
-    public void Transfer()
-    {
-      throw new NotImplementedException();
-    }
   }
 }
