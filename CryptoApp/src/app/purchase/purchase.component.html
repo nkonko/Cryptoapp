@@ -28,6 +28,21 @@
       </button>
     </div>
   </div>
-  <app-dollar *ngIf="isDolar"></app-dollar>
+  <app-dollar [balanceArs]="balanceArs" *ngIf="isDolar"></app-dollar>
+  <div class="row" *ngIf="isDolar">
+    <h4>Ingresa cuántos pesos queres convertir</h4>
+    <form [formGroup]="form">
+        <input type="text" placeholder="cantidad" formControlName="quantity" (keyup)="checkBalance()">
+        <button (click)="onPurchase()">Comprar</button>
+    </form>
+    <div class="col">
+        <h3>Luego de tu compra veras acreditado:</h3>
+        <p>U$D - {{balanceUsd | number:'.0-2'}}</p>
+    </div>
+    <div class="row" *ngIf="isDone">
+      <h3>Comprado!</h3>
+  </div>
+  
+</div>
 </div>
 

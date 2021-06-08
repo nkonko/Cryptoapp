@@ -32,9 +32,9 @@ namespace CryptoApp.Controllers
     [HttpGet]
     [Route("get/{id}")]
     [Produces(typeof(BankAccount))]
-    public IActionResult GetArsAccount([FromRoute] int id)
+    public IActionResult GetArsAccount([FromRoute] string id)
     {
-      var account = accountSvc.GetArsAccount(id);
+      var account = accountSvc.GetArsAccount(int.Parse(id));
 
       return Ok(account);
     }

@@ -1,6 +1,7 @@
 namespace CryptoApp.Controllers
 {
   using Domain;
+  using Domain.Implementation;
   using Microsoft.AspNetCore.Mvc;
   using Services.Interface;
 
@@ -18,11 +19,11 @@ namespace CryptoApp.Controllers
     [HttpPost]
     [Route("ArsToUsd")]
     [Produces(typeof(bool))]
-    public IActionResult ExchangeArsToUsd(int id, string amount)
+    public IActionResult ExchangeArsToUsd([FromBody]ExchangeObj exchangeObj)
     {
-      var amountd = decimal.Parse(amount);
+      var amountd = decimal.Parse(exchangeObj.Amount);
 
-      var result = exchangeSvc.ExchangeArsToUsd(id, amountd);
+      var result = exchangeSvc.ExchangeArsToUsd(int.Parse(exchangeObj.Id), amountd);
 
       return Ok(result);
     }

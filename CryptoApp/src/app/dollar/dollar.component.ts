@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dollar',
@@ -6,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dollar.component.css']
 })
 export class DollarComponent implements OnInit {
- public balanceArs = 0;
- public balanceUsd = 0;
- public dolarPrice = 0;
+ @Input() balanceArs;
+ public dolarPrice = 165;
   
- constructor() { }
+ constructor() {
+}
 
   ngOnInit(): void {
   }
+
+ 
+
+ 
 
 }

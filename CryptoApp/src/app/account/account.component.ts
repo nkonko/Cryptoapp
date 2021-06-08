@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AccountComponent implements OnInit {
   
   public id: number;
+  public isCreated = false;
   constructor(private accountService:AccountService, private router:Router) { }
 
   form = new FormGroup(
@@ -43,7 +44,7 @@ export class AccountComponent implements OnInit {
       },
       err => { console.log(err); 
       });
-
+    this.isCreated = true;
     this.form.reset();
   }
 

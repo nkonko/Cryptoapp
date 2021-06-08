@@ -2,8 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { account } from '../model/account.model';
-import { map } from "rxjs/operators";
-import { bankAccount } from '../model/bankaccount.model';
+import { Observable } from 'rxjs';
 
 const base_url = environment.base_url;
 
@@ -21,25 +20,7 @@ export class AccountService {
     return this.http.post(`${base_url}${this.api}`,formData,{headers: this.headers});
   }
 
-  public getAccount(id:number){
-    return this.http.get(`${base_url}${this.api}/${id}`,{headers: this.headers}).pipe(map(resp => this.mapToAccount(resp)))
-  }
-
-  private mapToAccount(resp: Object){
-    const accounts: bankAccount[] = [];
-    
-    if(resp === null){
-      return;
-    }
-
-    Object.entries(resp).forEach(([k,v]) =>
-      {
-        let account = new bankAccount();
-        account = v
-        account.AccountNumb = k
-
-        accounts.push(account);
-      });
-    return account;
+  public getAccount(id:string): Observable<any>{
+    return this.http.get(`${base_url}${this.api}/get/${id}`,{headers: this.headers});
   }
 }

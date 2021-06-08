@@ -8,13 +8,15 @@ namespace Services.Implementation
   {
     private readonly IAccountService accountSvc;
     private readonly IRepository<BankAccount> repository;
+    private readonly IRepository<CryptoAccount> cryptoRepo;
 
-    private readonly  int dolarPrice = 165;
-    private readonly  int bitcoinPrice = 43000;
-    public ExchangeService(IAccountService accountSvc, IRepository<BankAccount> repository)
+    private readonly int dolarPrice = 165;
+    private readonly int bitcoinPrice = 43000;
+    public ExchangeService(IAccountService accountSvc, IRepository<BankAccount> repository, IRepository<CryptoAccount> cryptoRepo)
     {
       this.accountSvc = accountSvc;
       this.repository = repository;
+      this.cryptoRepo = cryptoRepo;
     }
 
     public bool ExchangeArsToUsd(int id, decimal amount)
@@ -22,13 +24,17 @@ namespace Services.Implementation
       var accountArs = accountSvc.GetArsAccount(id);
       var accountUsd = accountSvc.GetUsdAccount(id);
 
-      accountArs.Balance -= amount;
-      accountUsd.Balance = amount / dolarPrice;
+      if (accountArs.Balance >= amount)
+      {
+        accountArs.Balance -= amount;
+        accountUsd.Balance = amount / dolarPrice;
 
-      repository.Update(accountArs);
-      repository.Update(accountUsd);
+        repository.Update(accountArs);
+        repository.Update(accountUsd);
+        return true;
+      }
 
-      return true;
+      return false;
     }
 
     public bool ExchangeUsdToBtc(int id, decimal amount)
@@ -38,6 +44,9 @@ namespace Services.Implementation
 
       accountUsd.Balance -= amount;
       accountBtc.Balance = amount / bitcoinPrice;
+
+      repository.Update(accountUsd);
+      cryptoRepo.Update(accountBtc);
 
       return true;
     }
